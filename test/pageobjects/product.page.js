@@ -1,4 +1,5 @@
 //const { $ } = require('webdriverio/build/commands/browser');
+
 const Page = require('./page');
 
 class ProductPage extends Page {
@@ -38,6 +39,14 @@ class ProductPage extends Page {
 
     get firstProductDecreaseBtn() {
         return $('//*[@id="product-0-decrease"]');
+    }
+
+    get firstProductAddToCartBtn() {
+        return $('//*[@id="product-0"]/button');
+    }
+
+    get secondProductAddtocartBtn() {
+            return $('//*[@id="product-1"]/button');
     }
 
     get signOutBtn() {
