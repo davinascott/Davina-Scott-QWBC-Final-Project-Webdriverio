@@ -48,6 +48,10 @@ class ProductPage extends Page {
     /**
      * Defines all page methods
      */
+
+    async productIntoView(elem) {
+        elem.scollintoview();
+    }
 }
 
 module.exports = new ProductPage();
