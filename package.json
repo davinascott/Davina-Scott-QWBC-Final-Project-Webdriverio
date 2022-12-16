@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "gallery": "npx wdio run wdio.conf.js --spec ./test/specs/gallery.e2e.js",
+    "authentication": "npx wdio run wdio.conf.js --spec ./test/specs/authentication.e2e.js"
   },
   "repository": {
     "type": "git",
