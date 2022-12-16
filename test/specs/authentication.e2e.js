@@ -1,4 +1,5 @@
 const authenticationPage = require("../pageobjects/authentication.page");
+const productPage = require("../pageobjects/product.page");
 
 describe('Authentication: ', async () => {
 
@@ -8,9 +9,10 @@ describe('Authentication: ', async () => {
         await expect(browser).toHaveUrlContaining("https://dev-mlluudmotpwoldtv.us.auth0.com/login?");
     });
 
-    // afterEach('Sign out of application', async () => {
-
-    // });
+    afterEach('Sign out of application', async () => {
+        await productPage.signOutBtn.click();
+        await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app");
+    });
 
     it.only('user should only be able to log in with valid credenntials', async () => {
         await expect(authenticationPage.btnSubmit).toBeExisting();
@@ -19,7 +21,7 @@ describe('Authentication: ', async () => {
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app/products");
     });
 
-    it.only('user should only be able to sign up with a valid credentials', async () => {
+    it('user should only be able to sign up with a valid credentials', async () => {
         await expect(authenticationPage.btnSubmit).toBeExisting();
         //await expect(authenticationPage.SignUpTab).toBeExisting();
         // await authenticationPage.authenticationTabs.$$('li')[2].$('a').click();
