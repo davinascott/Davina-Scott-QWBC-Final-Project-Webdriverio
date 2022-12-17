@@ -1,4 +1,3 @@
-//const { $ } = require('webdriverio/build/commands/browser');
 
 const Page = require('./page');
 
@@ -51,6 +50,10 @@ class ProductPage extends Page {
 
     get signOutBtn() {
         return $('//*[@id="top-sign-out"]')
+    }
+
+    get contactBtn() {
+        return $('//*[@id="top-contact"]')
     }
 
 
