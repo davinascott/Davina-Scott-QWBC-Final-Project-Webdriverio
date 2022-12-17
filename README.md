@@ -2,6 +2,9 @@
 ### Davina Scott
 Final project for QualityWorks UI Automation Bootcamp
 
+### Test Cases
+All test cases can be found withing this project in the root folder in a file called testcases.md
+
 ### Dependencies
 1. NodeJS v12, v14 or above
 3. NPM v6 or above
