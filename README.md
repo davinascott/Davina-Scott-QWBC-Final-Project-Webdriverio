@@ -26,5 +26,5 @@ Execute single test suites
 
 ```npm run **name of spec file**``` for eg. npm run checkout or npm run search
 
-# Caveats
-''' No Report has been added to the project '''
+# Reports
+run the command 'allure generate allure-reports && allure open'
