@@ -56,13 +56,21 @@ class ProductPage extends Page {
         return $('//*[@id="top-contact"]')
     }
 
+    get productTitleList() {
+        return $('(//p[@class="chakra-text css-1n64n71"])');
+    }
+
 
     /**
      * Defines all page methods
      */
 
     async productIntoView(elem) {
-        elem.scollintoview();
+        await elem.scollintoview();
+    }
+
+    async partialSearch(term){
+        await this.searchBox.setValue(term);
     }
 }
 
