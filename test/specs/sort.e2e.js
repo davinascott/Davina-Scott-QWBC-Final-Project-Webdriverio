@@ -28,7 +28,7 @@ describe('Sort: ', async () => {
         await $$('//p[@class="chakra-text css-1n64n71"]').forEach(async (element,index) => {
             await expect(element).toHaveTextContaining(sortData[0].results[index]);
         });
-        await galleryPage.sortDropDown.clearValue();
+        //await galleryPage.sortDropDown.clearValue();
     });
 
     it('Products can be sorted by category', async () => {
@@ -37,7 +37,7 @@ describe('Sort: ', async () => {
         await $$('//p[@class="chakra-text css-1n64n71"]').forEach(async (element,index) => {
             await expect(element).toHaveTextContaining(sortData[1].results[index]);
         });
-        await galleryPage.categoryDropDown.clearValue();
+        //await galleryPage.categoryDropDown.clearValue();
     });
 
     it('Has a reset button visible', async () => {
