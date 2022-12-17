@@ -5,7 +5,7 @@ const sortData = require("../data/sort.data");
 
 describe('Sort: ', async () => {
 
-    before('Navigate to landing page and press sign in button', async () => {
+    beforeEach('Navigate to landing page and press sign in button', async () => {
         await authenticationPage.open();
         await authenticationPage.btnSignInOrRegister.click();
         await expect(browser).toHaveUrlContaining("https://dev-mlluudmotpwoldtv.us.auth0.com/login?");
@@ -16,7 +16,7 @@ describe('Sort: ', async () => {
         await galleryPage.firstProductLink.scrollIntoView();
     });
 
-    after('Sign out of application', async () => {
+    afterEach('Sign out of application', async () => {
         await galleryPage.signOutBtn.waitForExist();
         await galleryPage.signOutBtn.click();
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app");
@@ -28,7 +28,7 @@ describe('Sort: ', async () => {
         await $$('//p[@class="chakra-text css-1n64n71"]').forEach(async (element,index) => {
             await expect(element).toHaveTextContaining(sortData[0].results[index]);
         });
-        await galleryPage.sortDropDown.clearValue();
+        //await galleryPage.sortDropDown.clearValue();
     });
 
     it('Products can be sorted by category', async () => {
@@ -37,7 +37,7 @@ describe('Sort: ', async () => {
         await $$('//p[@class="chakra-text css-1n64n71"]').forEach(async (element,index) => {
             await expect(element).toHaveTextContaining(sortData[1].results[index]);
         });
-        await galleryPage.categoryDropDown.clearValue();
+        //await galleryPage.categoryDropDown.clearValue();
     });
 
     it('Has a reset button visible', async () => {

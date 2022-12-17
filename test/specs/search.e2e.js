@@ -5,7 +5,7 @@ const searchData = require("../data/search.data");
 
 describe('Search: ', async () => {
 
-    before('Navigate to landing page and press sign in button', async () => {
+    beforeEach('Navigate to landing page and press sign in button', async () => {
         await authenticationPage.open();
         await authenticationPage.btnSignInOrRegister.click();
         await expect(browser).toHaveUrlContaining("https://dev-mlluudmotpwoldtv.us.auth0.com/login?");
@@ -16,7 +16,7 @@ describe('Search: ', async () => {
         await galleryPage.firstProductLink.scrollIntoView();
     });
 
-    after('Sign out of application', async () => {
+    afterEach('Sign out of application', async () => {
         await galleryPage.signOutBtn.waitForExist();
         await galleryPage.signOutBtn.click();
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app");

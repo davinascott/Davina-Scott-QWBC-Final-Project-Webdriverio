@@ -36,11 +36,16 @@ describe('Add To Cart: ', async () => {
     });
 
     it('Should be able to add multiple items to cart from product page', async () => {
-        await galleryPage.firstProductAddToCartBtn.waitForExist();
+        await expect(galleryPage.firstProductAddToCartBtn).toBeExisting();
         await galleryPage.firstProductAddToCartBtn.click();
-        await cartPage.closeCartBtn.waitForExist();
-        await cartPage.closeCartBtn.click();
+        await browser.url('https://ui-automation-camp.vercel.app/products#/cart');
+        await cartPage.cartFirstProductContainer.waitForExist();
+        await cartPage.backToShoppingBtn.waitForExist();
+        //await cartPage.backToShoppingBtn.toBeExisting();
+        await cartPage.backToShoppingBtn.click();
+        await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app/products");
         await expect(galleryPage.secondProductAddtocartBtn).toBeExisting();
+        await galleryPage.firstProductLink.scrollIntoView();
         await galleryPage.secondProductAddtocartBtn.click();
         await browser.url('https://ui-automation-camp.vercel.app/products#/cart');
         await cartPage.cartFirstProductContainer.waitForExist();
@@ -54,10 +59,10 @@ describe('Add To Cart: ', async () => {
         await galleryPage.firstProductAddToCartBtn.waitForExist();
         await galleryPage.firstProductLink.click();
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app/products/quality-hat-model");
-        await expect(detailPage.addTocartBtn).toBeExisting();
+        await detailPage.addTocartBtn.waitForExist();
+        await detailPage.addTocartBtn.scrollIntoView();
         await detailPage.addTocartBtn.click();
-        await cartPage.closeCartBtn.waitForExist();
-        await cartPage.closeCartBtn.click();
+        await ($('//*[@class="snipcart-cart__footer"]')).waitForExist();
         await browser.url('https://ui-automation-camp.vercel.app/products#/cart');
         await cartPage.cartFirstProductContainer.waitForExist();
         await cartPage.backToShoppingBtn.waitForExist();

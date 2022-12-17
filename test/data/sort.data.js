@@ -7,7 +7,7 @@ module.exports = [
     {
         scenario: "Sort by category:Pants",
         selection: "Pants",
-        results : ['Quality Cargo Pants','Quality Jeans Pants','Quality Pink Pants']
+        results : ['Quality Pink Pants','Quality Cargo Pants','Quality Jeans Pants']
     },
     {
         scenario: "should not be able to search using category keywords",
