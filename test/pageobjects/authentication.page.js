@@ -1,4 +1,4 @@
-//const { $ } = require('webdriverio/build/commands/browser');
+
 const Page = require('./page');
 
 class AuthenticationPage extends Page {
@@ -41,6 +41,14 @@ class AuthenticationPage extends Page {
 
     get authenticationTabs() {
         return $('//*[@class="auth0-lock-tabs"]');
+    }
+
+    get emailErrorMessage() {
+        return $('(//*[@class="auth0-lock-error-invalid-hint"])')
+    }
+
+    get wrongEmailMessage() {
+        return $('(//*[@class="animated fadeInUp"])');
     }
 
 

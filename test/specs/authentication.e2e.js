@@ -9,24 +9,35 @@ describe('Authentication: ', async () => {
         await expect(browser).toHaveUrlContaining("https://dev-mlluudmotpwoldtv.us.auth0.com/login?");
     });
 
-    afterEach('Sign out of application', async () => {
+    after('Sign out of application', async () => {
         await productPage.signOutBtn.click();
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app");
     });
 
-    it.only('user should only be able to log in with valid credenntials', async () => {
+    it('user should not be able to log in with invalid credenntials', async () => {
+        await expect(authenticationPage.btnSubmit).toBeExisting();
+        await expect(authenticationPage.btnSubmitText).toHaveTextContaining('LOG IN');
+        await authenticationPage.authenticate('test123421@tester.com','Password176');
+        await expect(authenticationPage.wrongEmailMessage).toBeExisting();
+        await expect(authenticationPage.wrongEmailMessage).toHaveTextContaining('WRONG EMAIL OR PASSWORD.');
+        await authenticationPage.inputEmail.clearValue();
+        await authenticationPage.inputPassword.clearValue();
+    });
+
+    it('user should not be able to log in with invalid email format', async () => {
+        await expect(authenticationPage.btnSubmit).toBeExisting();
+        await expect(authenticationPage.btnSubmitText).toHaveTextContaining('LOG IN');
+        await authenticationPage.authenticate('test','Password176');
+        await expect(authenticationPage.emailErrorMessage).toBeExisting();
+        await expect(authenticationPage.emailErrorMessage).toHaveTextContaining('Email is invalid');
+        await authenticationPage.inputEmail.clearValue();
+        await authenticationPage.inputPassword.clearValue();
+    });
+
+    it('user should be able to log in with valid credenntials', async () => {
         await expect(authenticationPage.btnSubmit).toBeExisting();
         await expect(authenticationPage.btnSubmitText).toHaveTextContaining('LOG IN');
         await authenticationPage.authenticate('test1@tester.com','Password1');
-        await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app/products");
-    });
-
-    it('user should only be able to sign up with a valid credentials', async () => {
-        await expect(authenticationPage.btnSubmit).toBeExisting();
-        //await expect(authenticationPage.SignUpTab).toBeExisting();
-        // await authenticationPage.authenticationTabs.$$('li')[2].$('a').click();
-        await expect(authenticationPage.btnSubmitText).toHaveTextContaining('SIGN UP');
-        await authenticationPage.authenticate('test2@tester.com','Password1');
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app/products");
     });
 
