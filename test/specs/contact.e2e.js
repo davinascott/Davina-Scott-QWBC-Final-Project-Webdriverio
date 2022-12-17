@@ -5,7 +5,7 @@ const contactPage = require("../pageobjects/contact.page");
 
 describe('ContactPage: ', async () => {
 
-    before('Navigate to landing page and press sign in button', async () => {
+    beforeEach('Navigate to landing page and press sign in button', async () => {
         await authenticationPage.open();
         await authenticationPage.btnSignInOrRegister.click();
         await expect(browser).toHaveUrlContaining("https://dev-mlluudmotpwoldtv.us.auth0.com/login?");
@@ -17,7 +17,7 @@ describe('ContactPage: ', async () => {
         await galleryPage.contactBtn.click();
     });
 
-    after('Sign out of application', async () => {
+    afterEach('Sign out of application', async () => {
         await browser.url('https://ui-automation-camp.vercel.app/products');
         await galleryPage.signOutBtn.waitForExist();
         await galleryPage.signOutBtn.click();
