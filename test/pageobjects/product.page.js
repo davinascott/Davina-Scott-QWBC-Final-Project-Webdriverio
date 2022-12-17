@@ -60,6 +60,22 @@ class ProductPage extends Page {
         return $('(//p[@class="chakra-text css-1n64n71"])');
     }
 
+    get productPageFavoritesBtn() {
+        return $('(//*[@class="css-1m8iww1"])[1]')
+    }
+
+    get starColorWhite() {
+        return $('(//*[@id="add-to-favorite"])[1]')
+    }
+
+    get starColorYellow() {
+        return $('(//*[@id="remove-from-favorite"])[1]')
+    }
+
+    get favoritestopbtn() {
+        return $('//*[@id="top-favorite"]');
+    }
+
 
     /**
      * Defines all page methods
@@ -71,6 +87,10 @@ class ProductPage extends Page {
 
     async partialSearch(term){
         await this.searchBox.setValue(term);
+    }
+
+    async clickProductpageFavorite() {
+        await this.productPageFavoritesBtn.click();
     }
 }
 

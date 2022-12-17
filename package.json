@@ -14,7 +14,8 @@
     "checkout": "npx wdio run wdio.conf.js --spec ./test/specs/checkout.e2e.js",
     "contact": "npx wdio run wdio.conf.js --spec ./test/specs/contact.e2e.js",
     "search": "npx wdio run wdio.conf.js --spec ./test/specs/search.e2e.js",
-    "sort": "npx wdio run wdio.conf.js --spec ./test/specs/sort.e2e.js"
+    "sort": "npx wdio run wdio.conf.js --spec ./test/specs/sort.e2e.js",
+    "favorites": "npx wdio run wdio.conf.js --spec ./test/specs/favorites.e2e.js"
   },
   "repository": {
     "type": "git",
