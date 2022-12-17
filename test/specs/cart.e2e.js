@@ -6,8 +6,6 @@ const cartPage = require("../pageobjects/cart.page");
 
 describe('Cart: ', async () => {
 
-    //const initialQuantity = cartPage.firstItemQuantity.getText();
-
     before('Navigate to landing page and press sign in button', async () => {
         await authenticationPage.open();
         await authenticationPage.btnSignInOrRegister.click();
@@ -34,29 +32,19 @@ describe('Cart: ', async () => {
         await expect(cartPage.firstItemQuantity).toHaveTextContaining("1");
         await cartPage.inreaseItem();
         await expect(cartPage.firstItemQuantity).toHaveTextContaining("2");
-        //await browser.url('https://ui-automation-camp.vercel.app/products');
     });
 
     it('Should have the checkout button visible', async () => {
-        // await expect(galleryPage.firstProductAddToCartBtn).toBeExisting();
-        // await galleryPage.firstProductAddToCartBtn.click();
         await browser.url('https://ui-automation-camp.vercel.app/products#/cart');
         await cartPage.cartFirstProductContainer.waitForExist();
-        // await expect(cartPage.firstItemQuantity).toHaveTextContaining("1");
-        // await cartPage.inreaseItem();
         await expect(cartPage.firstItemQuantity).toHaveTextContaining("2");
         await cartPage.checkOutBtn.waitForExist();
         await expect(cartPage.checkOutBtnTextCont).toHaveTextContaining("Checkout");
-        //await browser.url('https://ui-automation-camp.vercel.app/products');
     });
 
     it('Should be able to remove item from cart', async () => {
-        // await expect(galleryPage.firstProductAddToCartBtn).toBeExisting();
-        // await galleryPage.firstProductAddToCartBtn.click();
         await browser.url('https://ui-automation-camp.vercel.app/products#/cart');
         await cartPage.cartFirstProductContainer.waitForExist();
-        // await expect(cartPage.firstItemQuantity).toHaveTextContaining("1");
-        // await cartPage.inreaseItem();
         await expect(cartPage.firstItemQuantity).toHaveTextContaining("2");
         await cartPage.cartFirstRemoveButton.waitForExist();
         await cartPage.cartFirstRemoveButton.click();
