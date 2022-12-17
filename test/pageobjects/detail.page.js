@@ -36,10 +36,25 @@ class ProductDetailPage extends Page {
         return $('//*[@id="add-to-cart"]');
     }
 
+    get detailPageFavoritesBtn() {
+        return $('(//*[@class="css-1m8iww1"])[1]')
+    }
+
+    get starColorWhite() {
+        return $('(//*[@id="add-to-favorite"])[1]')
+    }
+
+    get starColorYellow() {
+        return $('(//*[@id="remove-from-favorite"])[1]')
+    }
+
 
     /**
      * Defines all page methods
      */
+    async clickDetailPageFavorite() {
+        await this.detailPageFavoritesBtn.click();
+    }
 
 }
 
