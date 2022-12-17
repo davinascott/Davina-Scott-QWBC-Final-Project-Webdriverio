@@ -3,7 +3,7 @@ const galleryPage = require("../pageobjects/product.page");
 const contactPage = require("../pageobjects/contact.page");
 
 
-describe('Checkout: ', async () => {
+describe('ContactPage: ', async () => {
 
     before('Navigate to landing page and press sign in button', async () => {
         await authenticationPage.open();

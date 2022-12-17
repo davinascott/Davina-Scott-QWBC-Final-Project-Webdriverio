@@ -1,9 +1,9 @@
 const authenticationPage = require("../pageobjects/authentication.page");
 const galleryPage = require("../pageobjects/product.page");
-const searchData = require("../data/search.data");
+const sortData = require("../data/sort.data");
 
 
-describe('Search: ', async () => {
+describe('Sort: ', async () => {
 
     before('Navigate to landing page and press sign in button', async () => {
         await authenticationPage.open();
@@ -22,28 +22,27 @@ describe('Search: ', async () => {
         await expect(browser).toHaveUrlContaining("https://ui-automation-camp.vercel.app");
     });
 
-    it('Should be able to perform a partial word search', async () => {
-        await galleryPage.searchBox.waitForExist();
-        await galleryPage.partialSearch(searchData[0].searchterm);
+    it('Products can be sorted in ascending order (A to Z) by product name', async () => {
+        await galleryPage.sortDropDown.waitForExist();
+        await galleryPage.sortDropDown.selectByVisibleText(sortData[0].selection);
         await $$('//p[@class="chakra-text css-1n64n71"]').forEach(async (element,index) => {
-            await expect(element).toHaveTextContaining(searchData[0].results[index])
+            await expect(element).toHaveTextContaining(sortData[0].results[index]);
         });
+        await galleryPage.sortDropDown.clearValue();
     });
 
-    it('Should be able to perform a full word search', async () => {
-        await galleryPage.searchBox.waitForExist();
-        await galleryPage.searchBox.clearValue();
-        await galleryPage.partialSearch(searchData[1].searchterm);
+    it('Products can be sorted by category', async () => {
+        await galleryPage.categoryDropDown.waitForExist();
+        await galleryPage.categoryDropDown.selectByVisibleText(sortData[1].selection);
         await $$('//p[@class="chakra-text css-1n64n71"]').forEach(async (element,index) => {
-            await expect(element).toHaveTextContaining(searchData[1].results[index])
+            await expect(element).toHaveTextContaining(sortData[1].results[index]);
         });
+        await galleryPage.categoryDropDown.clearValue();
     });
 
-    it('Should not be able to use categories as search terms', async () => {
-        await galleryPage.searchBox.waitForExist();
-        await galleryPage.searchBox.clearValue();
-        await galleryPage.partialSearch(searchData[2].searchterm);
-        await expect(galleryPage.firstProductLink).not.toBeExisting();
+    it('Has a reset button visible', async () => {
+        await galleryPage.resetBtn.waitForExist();
+        await expect(galleryPage.resetBtn).toHaveTextContaining('Reset');
     });
 
 });
