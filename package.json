@@ -9,7 +9,8 @@
     "gallery": "npx wdio run wdio.conf.js --spec ./test/specs/gallery.e2e.js",
     "authentication": "npx wdio run wdio.conf.js --spec ./test/specs/authentication.e2e.js",
     "detail": "npx wdio run wdio.conf.js --spec ./test/specs/detail.e2e.js",
-    "addtocart": "npx wdio run wdio.conf.js --spec ./test/specs/addtocart.e2e.js"
+    "addtocart": "npx wdio run wdio.conf.js --spec ./test/specs/addtocart.e2e.js",
+    "cart": "npx wdio run wdio.conf.js --spec ./test/specs/cart.e2e.js"
   },
   "repository": {
     "type": "git",
