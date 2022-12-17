@@ -1,3 +1,4 @@
+
 const Page = require('./page');
 
 class CartPage extends Page {
@@ -19,31 +20,35 @@ class CartPage extends Page {
     }
 
     get cartFirstRemoveButton() {
-        return $('(//*[@title="Remove item"])[1]')
+        return $('(//*[@title="Remove item"])[1]');
     }
 
     get cartFirstIncrementBtn() {
-        return $('(//*[@title="Increment quantity"])[1]')
+        return $('(//*[@title="Increment quantity"])[1]');
     }
 
     get cartFirstDecrementButton() {
-        return $('(//*[@title="Decrement quantity"])[1]')
+        return $('(//*[@title="Decrement quantity"])[1]');
     }
 
     get firstItemQuantity() {
-        return $('(//*[@class="snipcart-item-quantity__quantity snipcart__font--std"]/span)[1]')
+        return $('(//*[@class="snipcart-item-quantity__quantity snipcart__font--std"]/span)[1]');
     }
 
     get checkOutBtn() {
-        return $('//*[@class="snipcart-button-primary snipcart-base-button is-icon-right"]')
+        return $('//*[@class="snipcart-button-primary snipcart-base-button is-icon-right"]');
     }
 
     get checkOutBtnTextCont() {
-        return $('//*[@class="snipcart-base-button__label"]')
+        return $('//*[@class="snipcart-base-button__label"]');
     }
 
     get emptyCartMessage() {
         return $('//*[@class="snipcart-empty-cart__title snipcart__font--secondary snipcart__font--xlarge snipcart__font--bold"]');
+    }
+
+    get cartTotalPrice() {
+        return $('//*[@class="snipcart-summary-fees__amount snipcart-summary-fees__amount--highlight snipcart__font--large"]');
     }
 
     async removeItem() {
